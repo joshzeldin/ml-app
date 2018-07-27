@@ -1,6 +1,6 @@
 # MlApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+The goal of ML-App is to create a simple open-source GUI for utilizing machine learning libraries. Users should be able to upload data from a variety of sources, split the data up, and test different types of models. Eventually, the application should suggest models to the user and automatically apply optimal parameters. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
 ## Development server
 
