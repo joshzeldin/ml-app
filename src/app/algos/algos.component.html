@@ -1,0 +1,9 @@
+<h2>Machine Learning Algos</h2>
+<ul class="algos">
+  <li *ngFor="let algo of algos" 
+  (click)="onSelect(algo)"
+  [class.selected]="algo === selectedAlgo">
+    <span class="badge">{{algo.id}}</span> {{algo.name}}
+  </li>
+</ul>
+<app-algo-detail [algo]="selectedAlgo"></app-algo-detail>

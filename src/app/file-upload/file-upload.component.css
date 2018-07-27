@@ -1,0 +1,53 @@
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+}
+
+.select {
+  margin-right:5px;
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn {
+  margin-right:5px;
+  border: 2px solid gray;
+  color: white;
+  background-color: gray;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  position: absolute;
+
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.select input.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.select input:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}

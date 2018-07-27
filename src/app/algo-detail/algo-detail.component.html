@@ -1,0 +1,9 @@
+<div *ngIf="algo">
+  <h2>{{algo.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{algo.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="algo.name" placeholder="name">
+    </label>
+  </div>
+</div>
