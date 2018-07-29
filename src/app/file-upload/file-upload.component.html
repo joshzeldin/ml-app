@@ -1,6 +1,11 @@
 <div class="upload-btn-wrapper">
   <button class="select">Choose a File</button>
-  <input type="file" name="myfile" (change)="onFileSelected($event)" />
+  <input 
+    type="file" 
+    name="myfile" 
+    multiple="multiple"
+    (change)="onFileSelected($event)" 
+  />
 </div>
 <button type="button" class="btn" (click)="onUpload()">Upload</button>
 

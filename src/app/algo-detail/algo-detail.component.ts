@@ -10,6 +10,16 @@ export class AlgoDetailComponent implements OnInit {
 
   @Input()  algo: Algo;
 
+  parametize = function(param_values){
+    var params = String();
+    for (var key in param_values) {
+      if (param_values[key]) {
+        params = params.concat(key + " = " + param_values[key] + ', ');
+      }
+    }
+    return params.substring(0, params.length - 2);;
+  }
+
   constructor() { }
 
   ngOnInit() {

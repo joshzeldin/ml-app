@@ -1,9 +1,16 @@
 <div *ngIf="algo">
-  <h2>{{algo.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{algo.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="algo.name" placeholder="name">
-    </label>
-  </div>
+  <h2>{{ algo.name }} Parameters</h2>
+  <ul class="algos">
+    <li *ngFor="let param of algo.param_names">
+      <span class="badge">{{param}}</span> 
+      <input class="param" [(ngModel)]="algo.param_values[param]" placeholder="{{param}}"/>
+    </li>
+  </ul>
+  <h2>Python Code</h2>
+  <pre>
+from {{algo.pkg}}.{{algo.subpkg}} import {{algo.function}}
+myModel = {{algo.function}}({{parametize(algo.param_values)}})
+  </pre>
+  <br>
 </div>
+

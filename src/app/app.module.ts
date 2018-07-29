@@ -7,6 +7,7 @@ import { AlgosComponent } from './algos/algos.component';
 import { AlgoDetailComponent } from './algo-detail/algo-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { HamburgerComponent } from './navbar/hamburger/hamburger.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     AlgosComponent,
     AlgoDetailComponent,
     MessagesComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    HamburgerComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FileUploadService {
 
   uploadFile(ws, file) {
@@ -13,12 +14,21 @@ export class FileUploadService {
       ws.close();
       console.log("Closed connection to ws://localhost:1234")
     }
+
     file = file[0];
     var reader = new FileReader();
     reader.addEventListener('load', readFile);
-    reader.readAsText(file);
 
+    reader.onprogress = function(e) {
+      console.log(Math.round((e.loaded / e.total) * 100) + '%' + ' of file read')
+    };
+
+    reader.onerror = function(e) {
+      console.log(e)
+    }
+
+    reader.readAsText(file);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 }
