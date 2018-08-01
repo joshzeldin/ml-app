@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploadService } from '../file-upload.service'
+import { MatButtonModule } from '@angular/material';
+
 
 @Component({
   selector: 'app-file-upload',

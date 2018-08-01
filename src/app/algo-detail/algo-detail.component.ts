@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Algo } from '../algo';
 
+
 @Component({
   selector: 'app-algo-detail',
   templateUrl: './algo-detail.component.html',
