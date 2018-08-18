@@ -1,7 +1,7 @@
 import { Algo } from './algo';
 
 export const ALGOS: Algo[] = [
-  { id: 1, 
+  { id: 1,
     name: 'Linear Regression',
     type: 'Prediction',
     function: 'LinearRegression',
@@ -13,9 +13,15 @@ export const ALGOS: Algo[] = [
       normalize: 'True',
       copy_X: 'True',
       n_jobs: 'True'
-    }
+    },
+    param_table: [
+      {name: 'fit_intercept', value: 'True'},
+      {name: 'normalize', value: 'True'},
+      {name: 'copy_X', value: 'True'},
+      {name: 'n_jobs', value: 'True'}
+    ]
   },
-  { id: 2, 
+  { id: 2,
     name: 'Random Forest',
     type: 'Classification',
     function: 'RandomForestClassifier',
@@ -41,16 +47,24 @@ export const ALGOS: Algo[] = [
       verbose: 0,
       warm_start: 'False',
       class_weight: 'balanced'
-    }
-  },
-  { id: 3, 
-    name: 'K Nearest Neighbors',
-    type: 'Classification',
-    function: 'KNeighborsClassifier',
-    pkg: 'sklearn',
-    subpkg: 'neighbors',
-    param_names: [],
-    param_values: {
-    }
+    },
+    param_table: [
+      {name: 'n_estimators', value: 10},
+      {name: 'criterion', value: 'gini'},
+      {name: 'max_features', value: 'auto'},
+      {name: 'max_depth', value: null},
+      {name: 'min_samples_split', value: 2},
+      {name: 'min_samples_leaf', value: 1},
+      {name: 'min_weight_fraction_leaf', value: 0},
+      {name: 'max_leaf_nodes', value: null},
+      {name: 'min_impurity_decrease', value: 0},
+      {name: 'bootstrap', value: 'True'},
+      {name: 'oob_score', value: 'False'},
+      {name: 'n_jobs', value: 1},
+      {name: 'random_state', value: null},
+      {name: 'verbose', value: 0},
+      {name: 'warm_start', value: 'False'},
+      {name: 'class_weight', value: 'balanced'},
+    ]
   }
 ];

@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatIconModule, MatFormFieldModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridsterModule } from 'angular-gridster2';
+import { AgGridModule } from 'ag-grid-angular';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AlgosComponent } from './algos/algos.component';
@@ -12,6 +13,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HamburgerComponent } from './navbar/hamburger/hamburger.component';
 import { GridTestComponent } from './grid-test/grid-test.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { GridTestComponent } from './grid-test/grid-test.component';
     MessagesComponent,
     FileUploadComponent,
     HamburgerComponent,
-    GridTestComponent
+    GridTestComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { GridTestComponent } from './grid-test/grid-test.component';
     MatFormFieldModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
-    GridsterModule
+    GridsterModule,
+    AppRoutingModule,
+    AgGridModule.withComponents([])
   ],
   providers: [
     // no need to place any providers due to the `providedIn` flag...

@@ -7,4 +7,5 @@ export class Algo {
   subpkg: string;
   param_names: string[];
   param_values: any;
+  param_table: any[];
 }

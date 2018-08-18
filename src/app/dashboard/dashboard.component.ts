@@ -2,24 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Algo } from '../algo';
 import { AlgoService } from '../algo.service';
 
-@Component({
-  selector: 'app-algos',
-  templateUrl: './algos.component.html',
-  styleUrls: ['./algos.component.css']
+@Component ({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: [ './dashboard.component.css' ]
 })
-export class AlgosComponent implements OnInit {
-
-  algos: Algo[];
+export class DashboardComponent implements OnInit {
+  algos: Algo[] = [];
 
   constructor(private algoService: AlgoService) { }
 
   ngOnInit() {
     this.getAlgos();
-    this.algoService.setAlgoId(1);
   }
 
   getAlgos(): void {
     this.algoService.getAlgos()
-        .subscribe(algos => this.algos = algos);
+      .subscribe(algos => this.algos = algos.slice(0, 4));
   }
 }

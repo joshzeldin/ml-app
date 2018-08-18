@@ -1,9 +1,7 @@
-<h2 id="title">Algorithms</h2>
 <ul class="algos">
-  <li *ngFor="let algo of algos" 
-  (click)="onSelect(algo)"
-  [class.selected]="algo === selectedAlgo">
-    <span class="badge">{{algo.id}}</span> {{algo.name}}
+  <li *ngFor="let algo of algos">
+    <a (click)="algoService.setAlgoId(algo.id)">
+      <span class="badge">{{algo.id}}</span> {{algo.name}}
+    </a>
   </li>
 </ul>
-<app-algo-detail [algo]="selectedAlgo"></app-algo-detail>

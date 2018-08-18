@@ -18,11 +18,11 @@ export class GridTestComponent implements OnInit {
   dashboard: Array<GridsterItem>;
 
   static eventStart(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
-    console.info('eventStart', item, itemComponent, event);
+    console.log('eventStart', item, itemComponent, event);
   }
 
   static eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
-    console.info('eventStop', item, itemComponent, event);
+    console.log('eventStop', item, itemComponent, event);
   }
 
   static overlapEvent(source: GridsterItem, target: GridsterItem, grid: GridsterComponent) {
@@ -52,9 +52,9 @@ export class GridTestComponent implements OnInit {
     };
 
     this.dashboard = [
-      {cols: 2, rows: 4, y: 0, x: 0, dragEnabled:true, algos: true},
-      {cols: 1, rows: 1, y: 0, x: 4, dragEnabled:true, fileupload: true},
-      {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, algodetail: true},
+      {cols: 1, rows: 4, y: 0, x: 0, dragEnabled: true, algos: true},
+      {cols: 1, rows: 1, y: 0, x: 4, dragEnabled: true, fileupload: true},
+      {cols: 2, rows: 4, y: 0, x: 1, dragEnabled: true, algodetail: true},
       {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: true},
     ];
   }
