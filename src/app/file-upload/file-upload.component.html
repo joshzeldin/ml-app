@@ -1,7 +1,5 @@
-<div class="upload-btn-wrapper">
-<button mat-flat-button color="primary">
+<button mat-flat-button color="primary" class="file-upload">
 <label for="file-upload">Choose File</label>
 <input id="file-upload" type="file" multiple="multiple" (change)="onFileSelected($event)" />
 </button>
-<button mat-flat-button color="primary" (click)="onUpload()">Upload</button>
-</div>
+<button mat-flat-button color="primary" (click)="onUpload()" class="file-upload">Upload</button>

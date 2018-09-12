@@ -1,7 +1,6 @@
-<ul class="algos">
-  <li *ngFor="let algo of algos">
-    <a (click)="algoService.setAlgoId(algo.id)">
-      <span class="badge">{{algo.id}}</span> {{algo.name}}
-    </a>
-  </li>
-</ul>
+<button *ngFor="let algo of algonames" 
+mat-flat-button color="primary" 
+(click)="onSetAlgo(algo)"
+class="algo-choice">
+  {{algo}}
+</button>

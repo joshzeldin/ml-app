@@ -16,11 +16,13 @@ export class FileUploadComponent implements OnInit {
     this.selectedFile = <File>event.target.files;
   }
 
-  onUpload(){
-    var ws = new WebSocket("ws://localhost:1234");
-    ws.onmessage = function(e){ console.log(e); };
+  onUpload() {
+    const ws = new WebSocket('ws://localhost:1234');
+    ws.onmessage = function(e) {
+      console.log(e);
+    };
     ws.onopen = () => {
-      console.log("Opened connection to ws://localhost:1234");
+      console.log('Opened connection to ws://localhost:1234');
       this.fileUploadService.uploadFile(ws, this.selectedFile);
     };
   }

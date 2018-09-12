@@ -13,11 +13,6 @@ export class DashboardComponent implements OnInit {
   constructor(private algoService: AlgoService) { }
 
   ngOnInit() {
-    this.getAlgos();
   }
 
-  getAlgos(): void {
-    this.algoService.getAlgos()
-      .subscribe(algos => this.algos = algos.slice(0, 4));
-  }
 }

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { DisplayGrid, GridsterComponent, GridsterConfig, GridsterItem, 
+import { DisplayGrid, GridsterComponent, GridsterConfig, GridsterItem,
   GridsterItemComponentInterface, GridType } from 'angular-gridster2';
+import { Algo } from '../algo';
 import { AlgosComponent } from '../algos/algos.component';
 import { AlgoDetailComponent } from '../algo-detail/algo-detail.component';
 import { MessagesComponent } from '../messages/messages.component';
@@ -16,6 +17,7 @@ import { MessagesComponent } from '../messages/messages.component';
 export class GridTestComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+  algo: Algo;
 
   static eventStart(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
     console.log('eventStart', item, itemComponent, event);
@@ -52,10 +54,9 @@ export class GridTestComponent implements OnInit {
     };
 
     this.dashboard = [
-      {cols: 1, rows: 4, y: 0, x: 0, dragEnabled: true, algos: true},
-      {cols: 1, rows: 1, y: 0, x: 4, dragEnabled: true, fileupload: true},
-      {cols: 2, rows: 4, y: 0, x: 1, dragEnabled: true, algodetail: true},
-      {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: true, resizeEnabled: true},
+      {cols: 1, rows: 8, y: 0, x: 0, dragEnabled: true, algos: true},
+      {cols: 2, rows: 2, y: 0, x: 5, dragEnabled: true, fileupload: true},
+      {cols: 3, rows: 8, y: 0, x: 1, dragEnabled: true, algodetail: true},
     ];
   }
 
@@ -73,5 +74,9 @@ export class GridTestComponent implements OnInit {
 
   addItem() {
     this.dashboard.push({x: 0, y: 0, cols: 1, rows: 1});
+  }
+
+  onAlgoSet(algo) {
+    this.algo = algo;
   }
 }

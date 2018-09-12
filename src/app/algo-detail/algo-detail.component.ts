@@ -11,8 +11,9 @@ import { AlgoService } from '../algo.service';
 })
 export class AlgoDetailComponent implements OnInit {
 
-  @Input()
-  algo: Algo;
+  private gridApi;
+
+  @Input() algo: Algo;
 
   columnDefs = [
     {headerName: 'Parameter', field: 'name' },
@@ -31,28 +32,13 @@ export class AlgoDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private algoService: AlgoService,
-    private location: Location
   ) { }
 
   ngOnInit(): void {
-    this.getAlgoId();
   }
 
-  getAlgoId(): void {
-    this.algoService.getAlgoId()
-      .subscribe(algoId => this.getAlgo(algoId));
-  }
-
-  getAlgo(id): void {
-    if (id == null) {
-      id = +this.route.snapshot.paramMap.get('id');
-      this.algoService.getAlgo(id)
-        .subscribe(algo => this.algo = algo);
-    } else {
-      this.algoService.getAlgo(id)
-        .subscribe(algo => this.algo = algo);
-    }
+  onGridReady(params): void {
+    params.api.sizeColumnsToFit();
   }
 
 }

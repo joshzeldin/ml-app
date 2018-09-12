@@ -5,7 +5,5 @@ export class Algo {
   function: string;
   pkg: string;
   subpkg: string;
-  param_names: string[];
-  param_values: any;
-  param_table: any[];
+  params: any[];
 }

@@ -1,8 +1,12 @@
+<div *ngIf="algo">
 <h2>{{ algo.name }} Parameters</h2>
 <ag-grid-angular 
-  style="width: 100%" 
-  class="ag-theme-balham"
+  class="ag-theme-balham-dark algo-params ag-row-hover"
   gridAutoHeight="true"
-  [rowData]="algo.param_table" 
-  [columnDefs]="columnDefs">
+  [enableSorting]="true"
+  [rowData]="algo.params" 
+  [columnDefs]="columnDefs"
+  (gridReady)="onGridReady($event)"
+  (gridSizeChanged)="onGridReady($event)">
 </ag-grid-angular>  
+</div>

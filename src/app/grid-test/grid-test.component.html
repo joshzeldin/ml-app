@@ -1,8 +1,8 @@
-<gridster [options]="options" style="background-color:gray">
-  <gridster-item [item]="item" *ngFor="let item of dashboard">
+<gridster [options]="options" class="whole-grid">
+  <gridster-item [item]="item" *ngFor="let item of dashboard" class="gridster-item">
     <div class="button-holder">
       <div class="gridster-item-content" *ngIf="item.algos">
-        <app-algos></app-algos>
+        <app-algos class="grid-item-algos" (algoSet)="onAlgoSet($event)"></app-algos>
       </div>
     </div>
     <div class="button-holder">
@@ -10,9 +10,9 @@
         <app-file-upload></app-file-upload>
       </div>
     </div>
-    <div class="button-holder">
+    <div class="button-holder" >
       <div class="gridster-item-content" *ngIf="item.algodetail">
-        <app-algo-detail></app-algo-detail>
+        <app-algo-detail [algo]="algo"></app-algo-detail>
       </div>
     </div>
   </gridster-item>

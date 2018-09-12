@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatCheckboxModule, MatIconModule, MatFormFieldModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatIconModule, MatFormFieldModule, MatMenuModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridsterModule } from 'angular-gridster2';
 import { AgGridModule } from 'ag-grid-angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AlgosComponent } from './algos/algos.component';
 import { AlgoDetailComponent } from './algo-detail/algo-detail.component';
@@ -35,6 +35,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatIconModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     GridsterModule,
     AppRoutingModule,

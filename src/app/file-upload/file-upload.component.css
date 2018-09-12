@@ -2,10 +2,17 @@ input[type="file"] {
     display: none;
 }
 
-
 button {
   align-items: center;
   justify-content: space-around;
   margin: 2.5%;
   width:45%;
+}
+
+.file-upload {
+  margin-left:4%;
+  margin-right:4%;
+  margin-top:10px;
+  width: 92%;
+  text-align: center;
 }
