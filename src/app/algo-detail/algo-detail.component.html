@@ -1,12 +1,16 @@
 <div *ngIf="algo">
-<h2>{{ algo.name }} Parameters</h2>
+<h4>{{ algo.name }}</h4>
 <ag-grid-angular 
   class="ag-theme-balham-dark algo-params ag-row-hover"
   gridAutoHeight="true"
   [enableSorting]="true"
   [rowData]="algo.params" 
   [columnDefs]="columnDefs"
+  [enableCellChangeFlash]="true"
   (gridReady)="onGridReady($event)"
   (gridSizeChanged)="onGridReady($event)">
 </ag-grid-angular>  
+<mat-form-field class="algo-name">
+  <input matInput placeholder="Model name" value="my_new_model" type="url">
+</mat-form-field>
 </div>

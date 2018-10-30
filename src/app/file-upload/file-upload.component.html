@@ -1,5 +1,5 @@
-<button mat-flat-button color="primary" class="file-upload">
+<button mat-flat-button color="primary" class="file-select" *ngIf="!selectedFile">
 <label for="file-upload">Choose File</label>
 <input id="file-upload" type="file" multiple="multiple" (change)="onFileSelected($event)" />
 </button>
-<button mat-flat-button color="primary" (click)="onUpload()" class="file-upload">Upload</button>
+<button mat-flat-button color="accent" (click)="onUpload()" class="file-select" *ngIf="selectedFile">Upload {{selectedFile[0].name}}</button>

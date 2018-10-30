@@ -1,7 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Algo } from '../algo';
 import { AlgoService } from '../algo.service';
-import { WebsocketService } from '../websocket.service';
 import { Observer, Observable, Subject } from 'rxjs';
 
 @Component({
@@ -13,6 +12,7 @@ export class AlgosComponent implements OnInit {
 
   ML_SERVER_URL: String = 'ws://localhost:6789';
   algos: Algo[];
+  selectedAlgo: String;
   wsSubject: Subject<MessageEvent>;
   algonames: String[];
   ws: WebSocket;
@@ -20,32 +20,41 @@ export class AlgosComponent implements OnInit {
 
   constructor(
     private algoService: AlgoService,
-    private wsService: WebsocketService,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    // TODO: Get algos from Python
+    console.log('Init Algos');
     this.wsSubject = this.create(this.ML_SERVER_URL);
     this.wsSubject.subscribe(msg => this.onMLServerMsg(msg));
   }
 
-  onMLServerMsg(msg) {
+  onAlgoParams = function(parsed_msg) {
+    const algo = new Algo;
+    algo.name = parsed_msg.name;
+    algo.params = [];
+    for (let i = 0; i < parsed_msg.args.length; i++) {
+      algo.params.push({
+        'name': parsed_msg.args.reverse()[i],
+        'value': parsed_msg.defaults.reverse()[i]
+    });
+    }
+    algo.params = algo.params.reverse();
+    return algo;
+  };
+
+  onMLServerMsg = (msg) => {
     const parsed_msg = JSON.parse(msg.data);
     if (parsed_msg.type === 'algos') {
+      console.log(parsed_msg.value);
       this.algonames = parsed_msg.value;
+      console.log('Algos should be displayed');
     } else if (parsed_msg.type === 'algoParams') {
-      const algo = new Algo;
-      algo.name = parsed_msg.name;
-      algo.params = [];
-      for (let i = 0; i < parsed_msg.args.length; i++) {
-        algo.params.push({
-          'name': parsed_msg.args.reverse()[i],
-          'value': parsed_msg.defaults.reverse()[i]
-      });
-      }
-      algo.params = algo.params.reverse();
+      this.selectedAlgo = parsed_msg.name;
+      const algo = this.onAlgoParams(parsed_msg);
       this.algoSet.emit(algo);
     }
+    this.ref.markForCheck();
   }
 
   getAlgos() {
@@ -57,6 +66,7 @@ export class AlgosComponent implements OnInit {
 
   onSetAlgo(algo) {
     console.log(algo);
+    this.selectedAlgo = algo;
     this.ws.send(JSON.stringify({action: 'getAlgoParams', value: algo}));
   }
 

@@ -9,10 +9,10 @@ button {
   width:45%;
 }
 
-.file-upload {
-  margin-left:4%;
-  margin-right:4%;
-  margin-top:10px;
-  width: 92%;
+.file-select {
+  margin-left:2.5%;
+  margin-right:2.5%;
+  width: 95%;
   text-align: center;
+  float:left;
 }

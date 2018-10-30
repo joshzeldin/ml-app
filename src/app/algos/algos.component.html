@@ -1,6 +1,8 @@
+<div>
 <button *ngFor="let algo of algonames" 
-mat-flat-button color="primary" 
+mat-flat-button color="{{selectedAlgo == algo ? 'accent' : 'primary'}}" 
 (click)="onSetAlgo(algo)"
 class="algo-choice">
   {{algo}}
 </button>
+</div>

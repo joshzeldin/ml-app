@@ -1,8 +1,8 @@
 <gridster [options]="options" class="whole-grid">
-  <gridster-item [item]="item" *ngFor="let item of dashboard" class="gridster-item">
+  <gridster-item [item]="item" *ngFor="let item of dashboard" class="gridster-item" style="overflow-y: auto; overflow-x: hidden;">
     <div class="button-holder">
       <div class="gridster-item-content" *ngIf="item.algos">
-        <app-algos class="grid-item-algos" (algoSet)="onAlgoSet($event)"></app-algos>
+        <app-algos (algoSet)="onAlgoSet($event)"></app-algos>
       </div>
     </div>
     <div class="button-holder">
@@ -13,6 +13,11 @@
     <div class="button-holder" >
       <div class="gridster-item-content" *ngIf="item.algodetail">
         <app-algo-detail [algo]="algo"></app-algo-detail>
+      </div>
+    </div>
+    <div class="button-holder" >
+      <div class="gridster-item-content" *ngIf="item.chart">
+        <app-graph></app-graph>
       </div>
     </div>
   </gridster-item>

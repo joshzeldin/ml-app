@@ -16,8 +16,8 @@ export class AlgoDetailComponent implements OnInit {
   @Input() algo: Algo;
 
   columnDefs = [
-    {headerName: 'Parameter', field: 'name' },
-    {headerName: 'Value', field: 'value' }
+    {headerName: 'Parameter', field: 'name'},
+    {headerName: 'Value', field: 'value', editable: true, onCellValueChanged: this.onCellValueChanged }
   ];
 
   parametize = function(param_values) {
@@ -35,6 +35,10 @@ export class AlgoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onCellValueChanged(event) {
+    console.log(event);
   }
 
   onGridReady(params): void {

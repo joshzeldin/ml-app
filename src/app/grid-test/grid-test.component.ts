@@ -1,10 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation, SimpleChanges } from '@angular/core';
 import { DisplayGrid, GridsterComponent, GridsterConfig, GridsterItem,
   GridsterItemComponentInterface, GridType } from 'angular-gridster2';
 import { Algo } from '../algo';
-import { AlgosComponent } from '../algos/algos.component';
-import { AlgoDetailComponent } from '../algo-detail/algo-detail.component';
-import { MessagesComponent } from '../messages/messages.component';
 
 @Component({
   selector: 'app-grid-test',
@@ -18,6 +15,7 @@ export class GridTestComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
   algo: Algo;
+  algoscomponent: Object;
 
   static eventStart(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
     console.log('eventStart', item, itemComponent, event);
@@ -31,12 +29,20 @@ export class GridTestComponent implements OnInit {
     console.log('overlap', source, target, grid);
   }
 
+  public ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    }
+
   ngOnInit() {
     this.options = {
       gridType: GridType.Fit,
       displayGrid: DisplayGrid.None,
       pushItems: true,
       swap: false,
+      minCols: 12,
+      maxCols: 12,
+      minRows: 8,
+      maxRows: 8,
       draggable: {
         delayStart: 0,
         enabled: true,
@@ -53,10 +59,13 @@ export class GridTestComponent implements OnInit {
       }
     };
 
+    this.algoscomponent = {cols: 2, rows: 8, y: 0, x: 0, minItemCols: 2, maxItemCols: 2, dragEnabled: false, algos: true};
+
     this.dashboard = [
-      {cols: 1, rows: 8, y: 0, x: 0, dragEnabled: true, algos: true},
-      {cols: 2, rows: 2, y: 0, x: 5, dragEnabled: true, fileupload: true},
-      {cols: 3, rows: 8, y: 0, x: 1, dragEnabled: true, algodetail: true},
+      {cols: 2, rows: 8, x: 0, y: 0, minItemCols: 2, maxItemCols: 2, dragEnabled: false, algos: true},
+      {cols: 7, rows: 1, x: 2, y: 7, dragEnabled: true, fileupload: true},
+      {cols: 3, rows: 8, x: 9, y: 0, minItemCols: 3, dragEnabled: true, algodetail: true},
+      {cols: 7, rows: 7, x: 2, y: 0, chart: true}
     ];
   }
 
@@ -79,4 +88,5 @@ export class GridTestComponent implements OnInit {
   onAlgoSet(algo) {
     this.algo = algo;
   }
+
 }
